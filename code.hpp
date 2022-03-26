@@ -2,19 +2,18 @@
 #define __CODE_H__
 
 #include <vector>
-#include "colors.hpp"
 #include <iostream>
 #include "colorHelpers.hpp"
 class Code {
     private:
        const int numOfPegs = 4;
-       std::vector<Color> code;
+       Code code;
     public:
         Code();
         int getNumOfPegs(){ return numOfPegs;}
         Code generateRandomCode();
         Color& operator[](int idx);
-friend std::ostream& operator<<(std::ostream& os,Code& cd);
+friend std::ostream& operator<<(std::ostream& os, const Code& cd);
 //friend istream& operator>>(std::istream& is,Code& code);
 };
 
@@ -23,8 +22,7 @@ Code::Code(){
 }
 
 Color& Code::operator[](int idx) {
-    Color blank = Color::blank;
-    Color& result = blank;
+    Color& result = Color::blank;
     if (idx >= numOfPegs) {
         std::cout<<"index out of bonds, returning blank\n";
         return result;
@@ -34,13 +32,13 @@ Color& Code::operator[](int idx) {
 
 Code Code::generateRandomCode(){
     for (int i = 0; i <numOfPegs; i++){
-        this->code[i] = randomColor();
+        this->code[i] = ColorHelpers::randomColor();
         std::cout<<this->code[i];
     }
     return *this;
 }
 
- std::ostream& operator<<(std::ostream& os,Code& cd){
+ std::ostream& operator<<(std::ostream& os, const Code& cd){
      for(int i = 0; i < cd.getNumOfPegs(); i++){
          os<<cd[i]<<" ";
      }
