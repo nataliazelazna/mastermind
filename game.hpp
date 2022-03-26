@@ -1,8 +1,6 @@
 #ifndef __GAME_H__
 #define __GAME_H__
 
-#include <iostream>
-#include "colors.hpp"
 #include "codemaker.hpp"
 #include "codebreaker.hpp"
 

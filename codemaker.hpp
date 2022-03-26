@@ -7,11 +7,12 @@ using namespace std;
 
 class Codemaker{
     private:
+       const int numOfPegs = 4;
        vector<Color> code;
-       vector<Answer> hint;
+       vector<Color> hint;
        void createCode();
     public:
        Codemaker();
-       void showHint(const vector<Color>& ans);
+       vector<Color>& void showHint(const vector<Color>& ans);
 };
 #endif
