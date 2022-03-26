@@ -1,26 +1,24 @@
 #ifndef __COLORS_H__
 #define __COLORS_H__
 
-#include <random>
-#include <vector>
+#include<vector>
+#include<random>
+ enum Color {
+    R,         /* red */
+    O,         /* orange */
+    G,         /* green */
+    Y,         /* yellow */
+    B,         /* black */
+    W,         /* white */
+    blank = -1
+};
 
-enum Color = {
-    red,
-    blue,
-    green,
-    yellow, 
-    black,
-    white,
-    blank = -1;
-}
-
-/*this I googled, wasn't familiar with such a construction */
 
 Color randomColor(){
-    std::vector<Color> allColors({Color::red, Color::blue, Color::green, Color::yellow, Color::black, Color::white });
+    std::vector<Color> allColors ={Color::R, Color::B, Color::G, Color::Y, Color::B, Color::W };
     std::random_device rd;              //Will be used to obtain a seed for the random number engine
     std::mt19937 gen(rd());             //Standard mersenne_twister_engine seeded with rd()
-    std::uniform_int_distribution<size_t> dist(0, allColors.size() - 1);    //Length of the interval for uniform distribution
+    std::uniform_int_distribution<std::size_t> dist(0, allColors.size() - 1);    //Length of the interval for uniform distribution
     Color randColor = allColors[dist(gen)];
     return randColor;
 }

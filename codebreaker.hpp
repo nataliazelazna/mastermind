@@ -3,7 +3,6 @@
 
 #include "colors.hpp"
 #include <vector>
-using namespace std;
 
 class Codebreaker{
     private:

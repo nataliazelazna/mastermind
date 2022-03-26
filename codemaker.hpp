@@ -3,16 +3,17 @@
 
 #include "colors.hpp"
 #include <vector>
-using namespace std;
 
 class Codemaker{
     private:
        const int numOfPegs = 4;
        vector<Color> code;
        vector<Color> hint;
-       void createCode();
+       vector<Color>& computeHint(const vector<Color>& ans);
+
     public:
        Codemaker();
-       vector<Color>& void showHint(const vector<Color>& ans);
+       void createCode();
+       void showHint();
 };
 #endif
