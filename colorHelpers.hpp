@@ -6,16 +6,15 @@
 #include <vector>
 #include <iostream>
 
- enum class Color {
+ enum  Color {
     R,         /* red */
     O,         /* orange */
     G,         /* green */
     Y,         /* yellow */
     B,         /* black */
     W,         /* white */
-    blank = -1
+    blank = -1 /* empty field in answer */
 };
-
 
 class ColorHelpers{
     private: 
@@ -25,9 +24,10 @@ class ColorHelpers{
 
     public:
          static Color randomColor();
-         static char mapColorToChar(const Color& c);    
-         static Color mapCharToColor(const char& c);
-    friend std::ostream& operator<<(std::ostream& os, const Color& c);
+         static char mapColorToChar( Color& c);    
+         static Color mapCharToColor(char& c);
+
+    friend std::ostream& operator<<(std::ostream& os, Color& c);
  //  friend std::istream& operator>>(std::istream& is, Color c);     
 };
 

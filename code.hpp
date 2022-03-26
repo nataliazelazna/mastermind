@@ -7,13 +7,13 @@
 class Code {
     private:
        const int numOfPegs = 4;
-       Code code;
+       std::vector<Color> code;
     public:
         Code();
-        int getNumOfPegs(){ return numOfPegs;}
+        int getNumOfPegs(){ return this->numOfPegs;}
         Code generateRandomCode();
         Color& operator[](int idx);
-friend std::ostream& operator<<(std::ostream& os, const Code& cd);
+friend std::ostream& operator<<(std::ostream& os,  Code& cd);
 //friend istream& operator>>(std::istream& is,Code& code);
 };
 
@@ -22,7 +22,8 @@ Code::Code(){
 }
 
 Color& Code::operator[](int idx) {
-    Color& result = Color::blank;
+    Color blank = Color::blank;
+    Color& result = blank;
     if (idx >= numOfPegs) {
         std::cout<<"index out of bonds, returning blank\n";
         return result;
@@ -38,7 +39,7 @@ Code Code::generateRandomCode(){
     return *this;
 }
 
- std::ostream& operator<<(std::ostream& os, const Code& cd){
+ std::ostream& operator<<(std::ostream& os,  Code& cd){
      for(int i = 0; i < cd.getNumOfPegs(); i++){
          os<<cd[i]<<" ";
      }

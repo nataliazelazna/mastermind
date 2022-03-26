@@ -33,7 +33,7 @@ Color ColorHelpers::randomColor(){
     return randColor;
 }
 
-char ColorHelpers::mapColorToChar(const Color& color){
+char ColorHelpers::mapColorToChar( Color& color){
     std::cout<<"map color to char\n";
     std::map<Color,char>::const_iterator pos = colorToChar.find(color);
     if (pos == colorToChar.end()){
@@ -45,7 +45,7 @@ char ColorHelpers::mapColorToChar(const Color& color){
     }
 }
 
- Color ColorHelpers::mapCharToColor(const char& c){
+ Color ColorHelpers::mapCharToColor(char& c){
     std::map<char, Color>::const_iterator pos = charToColor.find(c);
     if (pos == charToColor.end()){
         std::cout<<"invalid key\n";
@@ -56,7 +56,7 @@ char ColorHelpers::mapColorToChar(const Color& color){
     }
 }
 
-std::ostream& operator<<(std::ostream& os,  const Color& c){
+std::ostream& operator<<(std::ostream& os, Color& c){
     std::cout<<"my operator\n";
     char output = ColorHelpers::mapColorToChar(c);
     os<<output;
