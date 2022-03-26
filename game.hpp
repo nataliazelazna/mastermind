@@ -8,7 +8,7 @@ using namespace std;
 
 class Game{
     private:
-       const int numOfRounds = 10; //dowiedz sie wiecej o constach w klasie
+       const int numOfRounds = 10; 
        Codemaker cm;      //this is a computer player with some logic
        Codebreaker cb;    //this is a human player
     public:

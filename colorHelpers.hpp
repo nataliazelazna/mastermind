@@ -16,6 +16,8 @@
     blank = -1 /* empty field in answer */
 };
 
+std::ostream& operator<<(std::ostream& os, Color& c);
+
 class ColorHelpers{
     private: 
         static std::vector<Color> allColors;

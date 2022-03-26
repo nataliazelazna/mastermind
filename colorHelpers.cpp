@@ -4,7 +4,7 @@
 #include <vector>
 #include<random>
 
-std::vector<Color> ColorHelpers::allColors ={Color::R, Color::B, Color::G, Color::Y, Color::B, Color::W };
+std::vector<Color> ColorHelpers::allColors = {Color::R, Color::B, Color::G, Color::Y, Color::B, Color::W };
 std::map<Color, char> ColorHelpers::colorToChar = {
             {Color::R, 'R'},
             {Color::O, 'O'},
@@ -24,8 +24,7 @@ std::map<char, Color> ColorHelpers::charToColor = {
             {'_', Color::blank}
         };        
 
-Color ColorHelpers::randomColor(){
-    
+Color ColorHelpers::randomColor(){    
     std::random_device rd;              //Will be used to obtain a seed for the random number engine
     std::mt19937 gen(rd());             //Standard mersenne_twister_engine seeded with rd()
     std::uniform_int_distribution<std::size_t> dist(0, allColors.size() - 1);    //Length of the interval for uniform distribution
@@ -34,7 +33,6 @@ Color ColorHelpers::randomColor(){
 }
 
 char ColorHelpers::mapColorToChar( Color& color){
-    std::cout<<"map color to char\n";
     std::map<Color,char>::const_iterator pos = colorToChar.find(color);
     if (pos == colorToChar.end()){
         std::cout<<"invalid key\n";
@@ -57,7 +55,6 @@ char ColorHelpers::mapColorToChar( Color& color){
 }
 
 std::ostream& operator<<(std::ostream& os, Color& c){
-    std::cout<<"my operator\n";
     char output = ColorHelpers::mapColorToChar(c);
     os<<output;
     return os;

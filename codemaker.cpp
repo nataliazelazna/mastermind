@@ -1,14 +1,14 @@
 #include "codemaker.hpp"
-#include "color.hpp"
+#include "colorHelpers.hpp"
+#include "code.hpp"
+
 
 Codemaker::Codemaker(){
-
+    
 }
 
-void Codemaker::createCode(){
-    for (int i = 0; i <numOfPegs; i++){
-        code[i] = randomColor();
-    }
+Code Codemaker::createCode(){
+
 }
 
 

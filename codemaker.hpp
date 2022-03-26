@@ -6,14 +6,13 @@
 
 class Codemaker{
     private:
-       const int numOfPegs = 4;
-       vector<Color> code;
-       vector<Color> hint;
-       vector<Color>& computeHint(const vector<Color>& ans);
+       Code code;
+       Code hint;
+       Code& computeHint(const Code& ans);
 
     public:
        Codemaker();
-       void createCode();
+       Code createCode();
        void showHint();
 };
 #endif

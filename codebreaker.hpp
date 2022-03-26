@@ -1,17 +1,16 @@
 #ifndef __CODEBREAKER_H__
 #define __CODEBREAKER_H__
 
-#include "colors.hpp"
-#include <vector>
+#include "colorHelpers.hpp"
 
 class Codebreaker{
     private:
-      vector<Color> answer;
-      vector<vector<Color> > allGivenAnswers;
+        Code currentAnswer;
+        vector<Code> allGivenAnswers;
+        vector<Code> allReceivedHints;
     public:
-       vector<Color> giveAnswer();
-       void showAllGivenAnswers();
-
+        Code giveAnswer();
+        void showAllGivenAnswers();
 };
 
 #endif
