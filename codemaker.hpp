@@ -1,18 +1,17 @@
 #ifndef __CODEMAKER_H__
 #define __CODEMAKER_H__
 
-#include "colors.hpp"
+#include "code.hpp"
 #include <vector>
-
+#include <map>
 class Codemaker{
     private:
-       Code code;
-       Code hint;
-       Code& computeHint(const Code& ans);
-
+       Code secret;
+       std::map<Color,int> secretStats;
+       void createSecretStats();
     public:
-       Codemaker();
-       Code createCode();
-       void showHint();
+        void createSecret();
+        Code computeHint(Code& ans);
+        Code& revealSecretInCaseOfFailure();
 };
 #endif

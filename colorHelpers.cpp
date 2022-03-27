@@ -2,9 +2,9 @@
 #include <map>
 #include "ColorHelpers.hpp"
 #include <vector>
-#include<random>
+#include <random>
 
-std::vector<Color> ColorHelpers::allColors = {Color::R, Color::B, Color::G, Color::Y, Color::B, Color::W };
+std::vector<Color> ColorHelpers::allColors = {Color::R, Color::O, Color::G, Color::Y, Color::B, Color::W };
 std::map<Color, char> ColorHelpers::colorToChar = {
             {Color::R, 'R'},
             {Color::O, 'O'},
@@ -22,8 +22,9 @@ std::map<char, Color> ColorHelpers::charToColor = {
             {'B', Color::B},
             {'W', Color::W},
             {'_', Color::blank}
-        };        
+        }; 
 
+/* this solution comes from google, I wasn't familiar with such approach for generating random values from enum */
 Color ColorHelpers::randomColor(){    
     std::random_device rd;              //Will be used to obtain a seed for the random number engine
     std::mt19937 gen(rd());             //Standard mersenne_twister_engine seeded with rd()
@@ -32,7 +33,7 @@ Color ColorHelpers::randomColor(){
     return randColor;
 }
 
-char ColorHelpers::mapColorToChar( Color& color){
+char ColorHelpers::mapColorToChar(const Color& color){
     std::map<Color,char>::const_iterator pos = colorToChar.find(color);
     if (pos == colorToChar.end()){
         std::cout<<"invalid key\n";
@@ -54,7 +55,7 @@ char ColorHelpers::mapColorToChar( Color& color){
     }
 }
 
-std::ostream& operator<<(std::ostream& os, Color& c){
+std::ostream& operator<<(std::ostream& os, const Color& c){
     char output = ColorHelpers::mapColorToChar(c);
     os<<output;
     return os;

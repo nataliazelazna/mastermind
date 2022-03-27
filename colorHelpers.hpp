@@ -16,7 +16,7 @@
     blank = -1 /* empty field in answer */
 };
 
-std::ostream& operator<<(std::ostream& os, Color& c);
+std::ostream& operator<<(std::ostream& os, const Color& c);
 
 class ColorHelpers{
     private: 
@@ -26,10 +26,10 @@ class ColorHelpers{
 
     public:
          static Color randomColor();
-         static char mapColorToChar( Color& c);    
+         static char mapColorToChar(const  Color& c);    
          static Color mapCharToColor(char& c);
 
-    friend std::ostream& operator<<(std::ostream& os, Color& c);
+    friend std::ostream& operator<<(std::ostream& os, const Color& c);
  //  friend std::istream& operator>>(std::istream& is, Color c);     
 };
 
