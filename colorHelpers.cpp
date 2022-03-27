@@ -21,7 +21,6 @@ std::map<char, Color> ColorHelpers::charToColor = {
             {'Y', Color::Y},
             {'B', Color::B},
             {'W', Color::W},
-            {'_', Color::blank}
         }; 
 
 /* this solution comes from google, I wasn't familiar with such approach for generating random values from enum */
@@ -60,10 +59,4 @@ std::ostream& operator<<(std::ostream& os, const Color& c){
     os<<output;
     return os;
 }
-/*
-std::istream& operator>>(std::istream& is, const Color& c){
-    char& input = ColorHelpers::mapCharToColor(c);
-    is>>input;
-    return is;
-}
-*/
+

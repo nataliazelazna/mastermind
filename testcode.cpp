@@ -5,6 +5,9 @@
 #include "codemaker.hpp"
 #include <vector>
 #include <map>
+#include <string>
+#include "game.hpp"
+
 int main(){
     Codemaker cm;
     cm.createSecret();
@@ -14,10 +17,10 @@ int main(){
     ans.setCode(v);
     std::cout<<"answer "<<ans<<std::endl;
     std::map<Color, int> stat = ans.getStats();
-    for(const auto& elem :stat ){
-        std::cout<<elem.first<<" "<<elem.second<<std::endl;
-    }
-    std::cout<<cm.computeHint(ans);
 
+    std::cout<<cm.computeHint(ans);
+    Game g;
+    std::cout<<g.getAnswer();
+   
 
 }

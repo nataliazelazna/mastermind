@@ -7,11 +7,9 @@ class Codebreaker{
     private:
         Code currentAnswer;
         //perhaps should be moved to game?
-        vector<Code> allGivenAnswers;
-        vector<Code> allReceivedHints;
+
     public:
         Code giveAnswer();
-        void showAllGivenAnswers();
 };
 
 #endif

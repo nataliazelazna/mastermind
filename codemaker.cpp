@@ -3,7 +3,6 @@
 #include "code.hpp"
 #include <vector>
 #include <algorithm>
-#include <cmath>
 
 void Codemaker::createSecret(){
     Code cd;
@@ -18,7 +17,7 @@ void Codemaker::createSecretStats(){
 
 Code Codemaker::computeHint(Code& answer){
     Code hint;
-    std::vector<Color> tempHint = std::vector<Color>(answer.getNumOfPegs(), Color::blank);
+    std::vector<Color> tempHint = std::vector<Color>(Code::numOfPegs, Color::blank);
     std::vector<Color> ans = answer.getCode();
     std::vector<Color> secretVector = secret.getCode();
     std::map<Color,int> ansStats = answer.getStats();
@@ -42,7 +41,6 @@ Code Codemaker::computeHint(Code& answer){
         auto it = std::find_if(ansStats.cbegin(), ansStats.cend(), [col](const std::pair<Color,int>& p){return p.first == col;});
         if (it != ansStats.cend()){
             numOfWhite += std::min(elem.second,it->second);
-            std::cout<<"num of whte "<<numOfWhite<<"for color "<<col<<std::endl;
         }
     }
     for(int i = numOfBlack; i < numOfBlack+numOfWhite; ++i){

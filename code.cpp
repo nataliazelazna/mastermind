@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <map>
 
+const int Code::numOfPegs = 4;
+
 Code::Code(){
     code = std::vector<Color>(numOfPegs, Color::blank);
 }
@@ -42,7 +44,7 @@ std::map<Color,int> Code::getStats(){
 
 std::ostream& operator<<(std::ostream& os, const Code& cd){
     std::vector<Color> tmp = cd.getCode();
-    for(int i = 0; i < cd.getNumOfPegs(); i++){
+    for(int i = 0; i < Code::numOfPegs; i++){
         os<<(cd.getCode())[i]<<" ";
      }
      os<<std::endl;

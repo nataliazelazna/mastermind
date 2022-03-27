@@ -25,12 +25,11 @@ class ColorHelpers{
         static std::map<char,Color> charToColor;
 
     public:
-         static Color randomColor();
-         static char mapColorToChar(const  Color& c);    
-         static Color mapCharToColor(char& c);
+        static Color randomColor();
+        static char mapColorToChar(const  Color& c);    
+        static Color mapCharToColor(char& c);
 
-    friend std::ostream& operator<<(std::ostream& os, const Color& c);
- //  friend std::istream& operator>>(std::istream& is, Color c);     
+        friend std::ostream& operator<<(std::ostream& os, const Color& c);    
 };
 
 #endif
