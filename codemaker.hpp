@@ -13,5 +13,6 @@ class Codemaker{
         void createSecret();
         Code computeHint(Code& ans);
         Code& revealSecretInCaseOfFailure();
+        bool isAnswerCorrect(Code& answer);
 };
 #endif

@@ -2,25 +2,26 @@
 #include "game.hpp"
 #include "code.hpp"
 #include "colorHelpers.hpp"
+using namespace std;
 
-Code Game::getAnswer(){
+Code Game::getUserAnswer(){
     char c;
     Color col;
     Code answer;
-    std::vector<char> userInput;
-    std::vector<Color> ans;
+    vector<char> userInput;
+    vector<Color> ans;
     
     do {
         userInput.clear();
-        std::cout<<"Provide your answer: ";
+        cout<<"Provide your answer: ";
         for (int i = 0; i < Code::numOfPegs; ++i){
-            std::cin>>c;
+            cin>>c;
             userInput.push_back(c);
         }  
         for(auto elem :  userInput) {
             col = ColorHelpers::mapCharToColor(elem);
             if (col == Color::blank) {
-                std::cout<<"Invalid color, please retry from the beginning\n";
+                cout<<"Invalid color, please retry from the beginning\n";
                 ans.clear();
                 break;
             }
@@ -32,6 +33,36 @@ Code Game::getAnswer(){
     } while(ans.size() < Code::numOfPegs);
     answer.setCode(ans);
     return answer;
+}
 
+Code Game::getHint(Code& answer){
+    return cm.computeHint(answer);
+}
+
+void Game::playMastermind(){
+    /* create secret once for game */
+    cm.createSecret();
+    cout<<"Secret is ready, start guessing, Colors may repeat\n";
+    cout<<"Avalaible colors are: R (red), O(orange), G(green), Y(yellow), V(violet), P(purple)\n";
+
+    bool isUserAnswerCorrect = false;
+    int roundNo = 1;
+    /* loop until all black or 10 rounds completed */
+    do {
+        Code answer = getUserAnswer();
+        wholeGame.push_back(answer);
+        Code hint = getHint(answer);
+        cout<<hint;
+        wholeGame.push_back(hint);
+        isUserAnswerCorrect = cm.isAnswerCorrect(hint);
+        if (isUserAnswerCorrect) {
+            cout<<"Congratulations! You guessed the code in "<<roundNo<<" rounds\n";
+        }
+        roundNo++;
+    } while ((roundNo <= numOfRounds) && (isUserAnswerCorrect == false));
+
+    if (isUserAnswerCorrect == false) {
+        cout<<"Correct answer is: "<<cm.revealSecretInCaseOfFailure();
+    } 
 }
 

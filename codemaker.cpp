@@ -4,6 +4,8 @@
 #include <vector>
 #include <algorithm>
 
+using namespace std;
+
 void Codemaker::createSecret(){
     Code cd;
     cd.generateRandomCode();
@@ -17,11 +19,11 @@ void Codemaker::createSecretStats(){
 
 Code Codemaker::computeHint(Code& answer){
     Code hint;
-    std::vector<Color> tempHint = std::vector<Color>(Code::numOfPegs, Color::blank);
-    std::vector<Color> ans = answer.getCode();
-    std::vector<Color> secretVector = secret.getCode();
-    std::map<Color,int> ansStats = answer.getStats();
-    std::map<Color,int> secretStatsForAnswer = this->secretStats;
+    vector<Color> tempHint = vector<Color>(Code::numOfPegs, Color::blank);
+    vector<Color> ans = answer.getCode();
+    vector<Color> secretVector = secret.getCode();
+    map<Color,int> ansStats = answer.getStats();
+    map<Color,int> secretStatsForAnswer = this->secretStats;
 
     //handle black pegs in answer
     int numOfBlack = 0;
@@ -38,9 +40,9 @@ Code Codemaker::computeHint(Code& answer){
     int numOfWhite = 0;
     for(const auto& elem :secretStatsForAnswer){
         Color col = elem.first;
-        auto it = std::find_if(ansStats.cbegin(), ansStats.cend(), [col](const std::pair<Color,int>& p){return p.first == col;});
+        auto it = find_if(ansStats.cbegin(), ansStats.cend(), [col](const pair<Color,int>& p){return p.first == col;});
         if (it != ansStats.cend()){
-            numOfWhite += std::min(elem.second,it->second);
+            numOfWhite += min(elem.second,it->second);
         }
     }
     for(int i = numOfBlack; i < numOfBlack+numOfWhite; ++i){
@@ -54,3 +56,12 @@ Code Codemaker::computeHint(Code& answer){
 Code& Codemaker::revealSecretInCaseOfFailure(){
     return this->secret;
 }
+
+ bool Codemaker::isAnswerCorrect(Code& answer){
+     bool result = true;
+     vector<Color> results = answer.getCode();
+     for(auto elem : results){
+         result = result && (elem == Color::B);
+     }
+     return result;
+ }

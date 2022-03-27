@@ -1,7 +1,6 @@
 #ifndef __COLOR_HELPERS_H__
 #define __COLOR_HELPERS_H__
 
-//#include "colors.hpp"
 #include <map>
 #include <vector>
 #include <iostream>
@@ -11,9 +10,12 @@
     O,         /* orange */
     G,         /* green */
     Y,         /* yellow */
+    V,         /* violet */
+    P,         /* purple */
+/* for hints from codemaker */
     B,         /* black */
     W,         /* white */
-    blank = -1 /* empty field in answer */
+    blank = -1 /* empty field in hint */
 };
 
 std::ostream& operator<<(std::ostream& os, const Color& c);

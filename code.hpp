@@ -20,7 +20,6 @@ class Code {
         std::map<Color, int> getStats();
         const std::vector<Color>& getCode() const {return this->code;}
         friend std::ostream& operator<<(std::ostream& os, const Code& cd);
-
 };
 
 
