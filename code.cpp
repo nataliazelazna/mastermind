@@ -32,7 +32,6 @@ Code& Code::setCode( std::vector<Color> data){
 std::map<Color,int> Code::getStats(){
     std::map<Color,int> stat;
     std::vector<Color> colors = this->getCode();
-    std::vector<Color>::iterator it = colors.begin();
     for(auto elem: colors){
         Color x = elem;
         int occurences = std::count(colors.cbegin(), colors.cend(), elem);
