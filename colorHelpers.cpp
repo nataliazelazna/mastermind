@@ -1,6 +1,6 @@
 #include <iostream>
 #include <map>
-#include "ColorHelpers.hpp"
+#include "colorHelpers.hpp"
 #include <vector>
 #include <random>
 

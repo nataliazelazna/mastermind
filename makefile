@@ -8,8 +8,8 @@ OBJS=$(subst .cc,.o,$(SRCS))
 all: mastermind
 
 mastermind: $(OBJS)
-    $(CXX) $(OBJS) -o $(TARGET)
+	$(CXX) $(OBJS) -o $(TARGET)
 
 clean:
-    $(RM) $(OBJS)
+	$(RM) $(OBJS)
 
