@@ -2,6 +2,8 @@
 #include "game.hpp"
 #include "code.hpp"
 #include "colorHelpers.hpp"
+#include <algorithm>
+
 using namespace std;
 
 Code Game::getUserAnswer(){
@@ -42,7 +44,7 @@ Code Game::getHint(Code& answer){
 void Game::playMastermind(){
     /* create secret once for game */
     cm.createSecret();
-    cout<<"Secret is ready, start guessing, Colors may repeat\n";
+    cout<<"Secret of length 4 is ready, start guessing. Colors may repeat\n";
     cout<<"Avalaible colors are: R (red), O(orange), G(green), Y(yellow), V(violet), P(purple)\n";
 
     bool isUserAnswerCorrect = false;
@@ -54,7 +56,8 @@ void Game::playMastermind(){
         Code hint = getHint(answer);
         cout<<hint;
         wholeGame.push_back(hint);
-        isUserAnswerCorrect = cm.isAnswerCorrect(hint);
+        vector<Color> correct = hint.getCode();
+        isUserAnswerCorrect = all_of(correct.cbegin(), correct.cend(), [](Color col){return col ==Color::B; });
         if (isUserAnswerCorrect) {
             cout<<"Congratulations! You guessed the code in "<<roundNo<<" rounds\n";
         }

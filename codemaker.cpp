@@ -53,15 +53,6 @@ Code Codemaker::computeHint(Code& answer){
     return hint;
 }
 
-Code& Codemaker::revealSecretInCaseOfFailure(){
+const Code& Codemaker::revealSecretInCaseOfFailure(){
     return this->secret;
 }
-
- bool Codemaker::isAnswerCorrect(Code& answer){
-     bool result = true;
-     vector<Color> results = answer.getCode();
-     for(auto elem : results){
-         result = result && (elem == Color::B);
-     }
-     return result;
- }
