@@ -20,7 +20,7 @@ Code Game::getUserAnswer(){
             cin>>c;
             userInput.push_back(c);
         }  
-        for(auto elem :  userInput) {
+        for(auto elem : userInput) {
             col = ColorHelpers::mapCharToColor(elem);
             if (col == Color::blank) {
                 cout<<"Invalid color, please retry from the beginning\n";
@@ -29,8 +29,7 @@ Code Game::getUserAnswer(){
             }
             else {
                 ans.push_back(col);
-            }
-           
+            }           
         }
     } while(ans.size() < Code::numOfPegs);
     answer.setCode(ans);
@@ -38,12 +37,13 @@ Code Game::getUserAnswer(){
 }
 
 Code Game::getHint(Code& answer){
-    return cm.computeHint(answer);
+    return codemaker.computeHint(answer);
 }
 
 void Game::playMastermind(){
     /* create secret once for game */
-    cm.createSecret();
+
+    codemaker.createSecret();
     cout<<"Secret of length 4 is ready, start guessing. Colors may repeat\n";
     cout<<"Avalaible colors are: R (red), O(orange), G(green), Y(yellow), V(violet), P(purple)\n";
 
@@ -65,7 +65,7 @@ void Game::playMastermind(){
     } while ((roundNo <= numOfRounds) && (isUserAnswerCorrect == false));
 
     if (isUserAnswerCorrect == false) {
-        cout<<"Correct answer is: "<<cm.revealSecretInCaseOfFailure();
+        cout<<"Correct answer is: "<<codemaker.revealSecretInCaseOfFailure();
     } 
 }
 

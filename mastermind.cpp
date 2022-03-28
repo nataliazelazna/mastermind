@@ -4,3 +4,4 @@ int main(){
     Game game;
     game.playMastermind();
 }
+
