@@ -14,7 +14,7 @@ Code::Code(){
 }
 
 Code Code::generateRandomCode(){
-    for (int i = 0; i <numOfPegs; i++){
+    for (int i = 0; i <numOfPegs; ++i){
         this->code[i] = ColorHelpers::randomColor();
     }
     return *this;
@@ -37,7 +37,6 @@ map<Color,int> Code::getStats(){
     map<Color,int> stat;
     vector<Color> colors = this->getCode();
     for(auto elem: colors){
-        Color x = elem;
         int occurences = count(colors.cbegin(), colors.cend(), elem);
         stat[elem] = occurences;
     }
@@ -46,7 +45,7 @@ map<Color,int> Code::getStats(){
 
 ostream& operator<<(ostream& os, const Code& cd){
     vector<Color> tmp = cd.getCode();
-    for(int i = 0; i < Code::numOfPegs; i++){
+    for(int i = 0; i < Code::numOfPegs; ++i){
         os<<(cd.getCode())[i]<<" ";
      }
      os<<endl;

@@ -27,7 +27,7 @@ Code Codemaker::computeHint(Code& answer){
 
     //handle black pegs in answer
     int numOfBlack = 0;
-    for(int i = 0; i < ans.size(); i++){
+    for(int i = 0; i < ans.size(); ++i){
         if (ans[i] == secretVector[i]){
             tempHint[numOfBlack] = Color::B;
             ++numOfBlack;
@@ -36,7 +36,7 @@ Code Codemaker::computeHint(Code& answer){
         }
     }
   
-    //handle white pegs
+    //handle white pegs, lambda comes from google, I was aware that it exists in c++
     int numOfWhite = 0;
     for(const auto& elem :secretStatsForAnswer){
         Color col = elem.first;

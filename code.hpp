@@ -12,7 +12,7 @@ class Code {
     private:
        std::vector<Color> code;
     public:
-        static const int numOfPegs; //static
+        static const int numOfPegs; 
         Code();
         Code generateRandomCode();
         Code& operator=(Code& orig);
@@ -21,6 +21,5 @@ class Code {
         const std::vector<Color>& getCode() const {return this->code;}
         friend std::ostream& operator<<(std::ostream& os, const Code& cd);
 };
-
 
 #endif
