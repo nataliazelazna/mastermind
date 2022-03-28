@@ -7,7 +7,7 @@
 class Game{
     private:
         const int numOfRounds = 10; 
-        Codemaker cm;          //this is a computer player with some logic
+        Codemaker codemaker;          //this is a computer player with some logic
         std::vector<Code> wholeGame;
     public:
         Code getUserAnswer();
